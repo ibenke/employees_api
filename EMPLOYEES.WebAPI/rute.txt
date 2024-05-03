@@ -1,0 +1,26 @@
+https://localhost:5001/employees			- vrati sve zaposlenike
+https://localhost:5001/employees/employee_id/2		- vrati zaposlenika prema id-u
+https://localhost:5001/employees/add			- dodaj zaposlenika
+BODY -> raw -> JSON
+{
+    "BirthDate":"1985-04-12",
+    "FirstName":"Danijel",
+    "LastName":"Testić",
+    "Gender": "M",
+    "HireDate": "2021-04-12"
+}
+https://localhost:5001/employees/edit			- uredi zaposlenika
+BODY -> raw -> JSON
+{
+    "EmpNo":1,
+    "BirthDate":"1985-04-12",
+    "FirstName":"Danijel",
+    "LastName":"Testić",
+    "Gender": "M",
+    "HireDate": "2021-04-12"
+}
+
+https://localhost:5001/employees/delete			- obriši zaposlenika
+{
+    "EmpNo":1,
+}
