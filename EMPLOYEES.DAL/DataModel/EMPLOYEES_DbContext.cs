@@ -4,17 +4,20 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace EMPLOYEES.DAL.DataModel
 {
+    //Definicija DbContext-a koji predstavlja sesiju sa bazom podataka i koristi se za upite
     public partial class EMPLOYEES_DbContext : DbContext
     {
         public EMPLOYEES_DbContext()
         {
         }
 
+        //Konstruktor koji prihvaća opcije za konfiguraciju DbContext-a
         public EMPLOYEES_DbContext(DbContextOptions<EMPLOYEES_DbContext> options)
             : base(options)
         {
         }
 
+        //Definira DbSet za entitet EmployeesIbenke, što omogućava CRUD operacije nad tablicom EMPLOYEES_IBENKE
         public virtual DbSet<EmployeesIbenke> EmployeesIbenke { get; set; }
 
         /*

@@ -13,11 +13,13 @@ using System.Threading.Tasks;
 namespace EMPLOYEES.WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]")] // Ruza za pristup kontroleru (u ovom slučaju /employees)
     public class EmployeesController : ControllerBase
     {
+        //servis za pružanje operacija nad zaposlenicima
         protected IService _service {  get; private set; }
 
+        //konstruktor u kojem se inicijalizira servis
         public EmployeesController(IService service)
         {
             _service = service;
@@ -37,6 +39,7 @@ namespace EMPLOYEES.WebAPI.Controllers
         //[Route("employees")]
         public IEnumerable<EmployeesDomain> GetEmployeesDomains()
         {
+            //vraća sve zaposlenike u obliku EmployeesDomain klase
             IEnumerable<EmployeesDomain> employeesDomains = _service.GetAllEmployeesDomain();
             return employeesDomains;
         }
@@ -45,6 +48,7 @@ namespace EMPLOYEES.WebAPI.Controllers
         [HttpGet]
         [Route("employee_id/{employeeId}")]
         public EmployeesDomain GetEmployeesDomain(int employeeId) {
+            //vraća zaposlenika prema id-u
             EmployeesDomain employeesDomain = _service.GetEmployeeDomainByEmployeeId(employeeId);
             return employeesDomain;
         }
@@ -67,12 +71,14 @@ namespace EMPLOYEES.WebAPI.Controllers
         {
             try
             {
+                //kreira novog zaposlenika prema EmployeeREST klasi
                 EmployeesDomain employeesDomain = new EmployeesDomain();
                 employeesDomain.BirthDate = employeeREST.BirthDate;
                 employeesDomain.FirstName = employeeREST.FirstName;
                 employeesDomain.LastName = employeeREST.LastName;
                 employeesDomain.Gender = employeeREST.Gender;
                 employeesDomain.HireDate = employeeREST.HireDate;
+
                 bool add_user = await _service.AddEmployeeAsync(employeesDomain);
                 if (add_user)
                 {

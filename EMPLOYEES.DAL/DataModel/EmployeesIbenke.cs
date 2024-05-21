@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace EMPLOYEES.DAL.DataModel
 {
+    //ova klasa predstavlja tablicu u bazi podataka. Svojstva koja su ovdje navedena odgovaraju stupcima u tablici
     public partial class EmployeesIbenke
     {
         public int EmpNo { get; set; }

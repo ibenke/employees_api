@@ -24,11 +24,14 @@ namespace EMPLOYEES.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
 
+            // Konfiguriranje DbContext-a za rad sa SQL serverom
             services.AddDbContext<EMPLOYEES_DbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("EMPLOYEES_DBConnection")));
 
+            //dodavanje servisnog sloja u Dependency Injection kontejner
+            //Registrira implementaciju Service.Service za suèelje IService.
+            //Kada se IService ubrizgava u konstruktor, DI kontejner æe koristiti ovu implementaciju
             services.AddScoped<IService, Service.Service>();
 
             services.AddScoped<IRepository, Repository.Repository>();
@@ -42,9 +45,9 @@ namespace EMPLOYEES.WebAPI
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://localhost:5173")
-                                      .AllowAnyHeader()
-                                      .AllowAnyMethod());
+                    builder => builder.WithOrigins("http://localhost:5173") // Dozvoljava pristup s odreðenog URL-a
+                                      .AllowAnyHeader() // Dozvoljava sve zaglavlja
+                                      .AllowAnyMethod()); // Dozvoljava sve HTTP metode
             });
             services.AddControllers();
         }

@@ -11,6 +11,10 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace EMPLOYEES.Repository
 {
+    /*
+     Klasa koja implementira sučelje IRepository i služi kao sloj za pristup podacima iz baze, obavljajući
+    CRUD operacije nad entitetima EmployeesIbenke i mapirajući ih na poslovni model EmployeesDomain
+     */
     public class Repository : IRepository
     {
         private readonly EMPLOYEES_DbContext _appDbContext; 

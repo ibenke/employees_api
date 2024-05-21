@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace EMPLOYEES.Service
 {
+    /*
+     Klasa koja implementira sučelje IService i služi kao poslovni sloj aplikacije koristeći repozitorij IRepository za obavljanje
+    CRUD operacija nad zaposlenicima
+     */
     public class Service : IService
     {
         readonly IRepository _repository;
